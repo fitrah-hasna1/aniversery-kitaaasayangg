@@ -1,0 +1,2360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Little Universe ❤️</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:
+        radial-gradient(circle at 50% -10%,#5c1939 0%,#251020 30%,#0b070c 75%);
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* =========================
+   STARS
+========================= */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+}
+
+body::before{
+    background-image:
+        radial-gradient(#fff 1px,transparent 1px),
+        radial-gradient(#fff 1px,transparent 1px);
+    background-size:80px 80px,120px 120px;
+    background-position:0 0,40px 50px;
+    opacity:.18;
+}
+
+body::after{
+    background:
+        radial-gradient(circle at 20% 30%,rgba(255,100,160,.12),transparent 25%),
+        radial-gradient(circle at 80% 70%,rgba(150,80,255,.08),transparent 25%);
+}
+
+/* =========================
+   INTRO
+========================= */
+
+#intro{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:
+        radial-gradient(circle,#3a1730,#0a060b 70%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:25px;
+    transition:1s;
+}
+
+.intro-content{
+    max-width:450px;
+}
+
+.intro-heart{
+    font-size:90px;
+    animation:heartbeat 1.5s infinite;
+    filter:drop-shadow(0 0 25px #ff477f);
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+.intro-small{
+    color:#c9adb9;
+    letter-spacing:4px;
+    font-size:11px;
+    margin-top:20px;
+}
+
+.intro-title{
+    font-size:40px;
+    margin:12px 0;
+    background:linear-gradient(90deg,#fff,#ff9dbb);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.intro-date{
+    color:#ff9bb8;
+    letter-spacing:5px;
+    margin-bottom:25px;
+}
+
+.start-btn{
+    padding:15px 30px;
+    border-radius:50px;
+    background:#ff5e91;
+    color:white;
+    border:none;
+    font-size:15px;
+    font-weight:bold;
+    box-shadow:0 0 25px rgba(255,70,130,.4);
+    cursor:pointer;
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+.music-btn{
+    position:fixed;
+    top:15px;
+    right:15px;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    border:none;
+    background:#35152a;
+    border:1px solid #75405a;
+    color:white;
+    z-index:100;
+    cursor:pointer;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+    width:92%;
+    max-width:680px;
+    margin:auto;
+    padding:70px 0;
+}
+
+.top-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.top-title h1{
+    font-size:34px;
+}
+
+.top-title p{
+    color:#bdaab4;
+    margin-top:10px;
+    line-height:1.7;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-container{
+    position:sticky;
+    top:0;
+    z-index:90;
+    background:rgba(10,6,11,.8);
+    backdrop-filter:blur(12px);
+    padding:12px 0;
+    margin-bottom:25px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    color:#c7adb8;
+    margin-bottom:7px;
+}
+
+.progress-bar{
+    width:100%;
+    height:6px;
+    background:#21121d;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+    width:10%;
+    background:linear-gradient(90deg,#ff4c86,#ffabc2);
+    transition:.5s;
+}
+
+/* =========================
+   CHAPTER
+========================= */
+
+.chapter{
+    background:
+        linear-gradient(145deg,
+        rgba(52,23,40,.94),
+        rgba(20,11,19,.94));
+    border:1px solid #572a43;
+    border-radius:28px;
+    padding:28px 22px;
+    margin:35px 0;
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        inset 0 0 30px rgba(255,80,130,.025);
+    position:relative;
+    overflow:hidden;
+    transition:.6s;
+}
+
+.chapter::before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:#ff4d86;
+    filter:blur(80px);
+    opacity:.08;
+    top:-60px;
+    right:-60px;
+}
+
+.chapter.locked{
+    opacity:.25;
+    filter:blur(3px);
+    pointer-events:none;
+    transform:scale(.98);
+}
+
+.chapter.unlocked{
+    animation:chapterIn .8s ease;
+}
+
+@keyframes chapterIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.chapter-number{
+    text-align:center;
+    color:#ff779f;
+    letter-spacing:4px;
+    font-size:11px;
+    margin-bottom:8px;
+}
+
+.chapter h2{
+    text-align:center;
+    font-size:27px;
+    margin-bottom:15px;
+}
+
+.chapter-text{
+    color:#d5c3cc;
+    text-align:center;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.unlock-text{
+    text-align:center;
+    color:#ff91b1;
+    font-size:12px;
+    margin-top:15px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn{
+    display:block;
+    margin:20px auto 0;
+    padding:13px 23px;
+    border:none;
+    border-radius:30px;
+    background:#ff5d91;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 8px 25px rgba(255,70,130,.3);
+}
+
+/* =========================
+   CHAPTER 1
+========================= */
+
+.heart-button{
+    width:150px;
+    height:150px;
+    margin:25px auto;
+    border-radius:50%;
+    background:
+        radial-gradient(circle,#4a1932,#160b13);
+    border:1px solid #6d3551;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:70px;
+    cursor:pointer;
+    box-shadow:0 0 35px rgba(255,65,130,.15);
+    transition:.2s;
+    user-select:none;
+}
+
+.heart-button:active{
+    transform:scale(.85);
+}
+
+.counter-small{
+    text-align:center;
+    color:#ff9bb7;
+}
+
+/* =========================
+   CHAPTER 2
+========================= */
+
+.envelope-wrap{
+    display:flex;
+    justify-content:center;
+    margin:25px 0;
+}
+
+.envelope{
+    width:230px;
+    height:150px;
+    background:#ff729e;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:65px;
+    cursor:pointer;
+    box-shadow:0 20px 40px rgba(0,0,0,.4);
+    transition:.6s;
+}
+
+.envelope.open{
+    transform:rotateX(25deg) scale(1.05);
+}
+
+.letter{
+    display:none;
+    background:#fff0f5;
+    color:#351927;
+    border-radius:18px;
+    padding:22px;
+    line-height:1.8;
+    font-size:14px;
+    animation:chapterIn .7s;
+}
+
+.typing{
+    border-right:2px solid #ff5c91;
+}
+
+/* =========================
+   CHAPTER 3 GALLERY
+========================= */
+
+.gallery{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.photo-card{
+    width:29%;
+    background:#fff;
+    padding:7px 7px 22px;
+    transform:rotate(-4deg);
+    transition:.5s;
+    cursor:pointer;
+}
+
+.photo-card:nth-child(2){
+    transform:rotate(4deg);
+}
+
+.photo-card:nth-child(3){
+    transform:rotate(-2deg);
+}
+
+.photo-card:hover{
+    transform:rotate(0) translateY(-10px);
+}
+
+.photo-card img{
+    width:100%;
+    height:130px;
+    object-fit:cover;
+}
+
+.photo-card span{
+    display:block;
+    color:#3b2430;
+    text-align:center;
+    font-size:11px;
+    margin-top:8px;
+}
+
+.gallery-result{
+    text-align:center;
+    color:#ff9db9;
+    margin-top:18px;
+}
+
+/* =========================
+   CHAPTER 4 COUNTER
+========================= */
+
+.date-start{
+    text-align:center;
+    color:#ff91af;
+    margin-top:15px;
+}
+
+.time-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin:25px 0;
+}
+
+.time-card{
+    background:#110910;
+    border:1px solid #4d263b;
+    border-radius:15px;
+    padding:13px 3px;
+    text-align:center;
+}
+
+.time-card b{
+    display:block;
+    color:#ff81a6;
+    font-size:22px;
+}
+
+.time-card span{
+    color:#95818b;
+    font-size:10px;
+}
+
+/* =========================
+   CHAPTER 5 QUIZ
+========================= */
+
+.quiz-question{
+    background:#120a11;
+    border:1px solid #4b2639;
+    border-radius:18px;
+    padding:18px;
+    margin:15px 0;
+}
+
+.quiz-question h3{
+    font-size:15px;
+    margin-bottom:13px;
+}
+
+.quiz-options{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.quiz-options button{
+    padding:12px;
+    border-radius:15px;
+    border:1px solid #5c3046;
+    background:#25121e;
+    color:#ddd;
+    cursor:pointer;
+}
+
+.quiz-options button:hover{
+    background:#452036;
+}
+
+.quiz-score{
+    text-align:center;
+    color:#ff9ab7;
+    margin-top:15px;
+}
+
+/* =========================
+   CHAPTER 6 CATCH HEART
+========================= */
+
+.game-area{
+    height:280px;
+    position:relative;
+    background:#0c070d;
+    border:1px solid #442338;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:20px;
+}
+
+.catch-heart{
+    position:absolute;
+    font-size:32px;
+    cursor:pointer;
+    display:none;
+    user-select:none;
+    filter:drop-shadow(0 0 10px #ff4c86);
+    animation:heartbeat 1s infinite;
+}
+
+.catch-score{
+    text-align:center;
+    margin-top:12px;
+    color:#ff9ab8;
+}
+
+/* =========================
+   CHAPTER 7 GARDEN
+========================= */
+
+.garden{
+    min-height:170px;
+    background:
+        linear-gradient(#130b13,#1a0d15);
+    border-radius:20px;
+    border:1px solid #432238;
+    display:flex;
+    align-items:end;
+    justify-content:center;
+    gap:10px;
+    padding:25px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.seed{
+    font-size:42px;
+    cursor:pointer;
+    animation:grow .6s;
+}
+
+@keyframes grow{
+    from{
+        transform:scale(0);
+    }
+    to{
+        transform:scale(1);
+    }
+}
+
+.garden-count{
+    text-align:center;
+    color:#ff9bb8;
+    margin-top:12px;
+}
+
+/* =========================
+   CHAPTER 8 CODE
+========================= */
+
+.code-box{
+    text-align:center;
+    margin-top:20px;
+}
+
+.code-input{
+    width:180px;
+    padding:14px;
+    border-radius:15px;
+    background:#0e080d;
+    color:white;
+    border:1px solid #633149;
+    text-align:center;
+    font-size:20px;
+    letter-spacing:6px;
+}
+
+.code-result{
+    text-align:center;
+    margin-top:15px;
+    color:#ff91b1;
+}
+
+/* =========================
+   CHAPTER 9
+========================= */
+
+.question-box{
+    text-align:center;
+    padding:25px 10px;
+}
+
+.big-question{
+    font-size:21px;
+    line-height:1.6;
+    color:#f4dce5;
+}
+
+.yes-btn{
+    margin:20px 5px 0;
+}
+
+.no-btn{
+    margin:20px 5px 0;
+    background:#2c1724;
+}
+
+/* =========================
+   CHAPTER 10
+========================= */
+
+.future-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:20px;
+}
+
+.future-card{
+    background:#130a11;
+    border:1px solid #4d273b;
+    padding:22px 10px;
+    border-radius:18px;
+    text-align:center;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.future-card:hover{
+    transform:translateY(-5px);
+    border-color:#ff719b;
+}
+
+.future-card .icon{
+    font-size:35px;
+    margin-bottom:8px;
+}
+
+.future-card p{
+    color:#bcaab3;
+    font-size:12px;
+}
+
+/* =========================
+   ENDING
+========================= */
+
+#ending{
+    display:none;
+    text-align:center;
+    padding:80px 10px 120px;
+}
+
+.final-heart{
+    font-size:95px;
+    animation:heartbeat 1.5s infinite;
+    filter:drop-shadow(0 0 30px #ff477f);
+}
+
+#ending h1{
+    font-size:38px;
+    margin:20px 0;
+    color:#ff9ab8;
+}
+
+.final-text{
+    color:#d8c3cc;
+    line-height:2;
+    font-size:14px;
+}
+
+.final-date{
+    color:#ff87a9;
+    margin-top:25px;
+    letter-spacing:5px;
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.float-heart{
+    position:fixed;
+    bottom:-40px;
+    pointer-events:none;
+    animation:floatUp linear forwards;
+    z-index:1;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   SPARKLE
+========================= */
+
+.spark{
+    position:fixed;
+    pointer-events:none;
+    font-size:15px;
+    animation:spark .8s forwards;
+    z-index:999;
+}
+
+@keyframes spark{
+    from{
+        transform:scale(.5);
+        opacity:1;
+    }
+
+    to{
+        transform:scale(2) translateY(-30px);
+        opacity:0;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    .intro-title{
+        font-size:32px;
+    }
+
+    .chapter{
+        padding:25px 17px;
+    }
+
+    .gallery{
+        gap:7px;
+    }
+
+    .photo-card{
+        width:30%;
+    }
+
+    .photo-card img{
+        height:105px;
+    }
+
+    .time-grid{
+        gap:5px;
+    }
+
+    .time-card b{
+        font-size:18px;
+    }
+
+    .future-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<div id="intro">
+
+    <div class="intro-content">
+
+        <div class="intro-heart">
+            ❤️
+        </div>
+
+        <div class="intro-small">
+            A LITTLE STORY ABOUT US
+        </div>
+
+        <div class="intro-title">
+            Our Little Universe
+        </div>
+
+        <div class="intro-date">
+            08 • 06 • 2026
+        </div>
+
+        <p class="chapter-text">
+            Adaaa sebuahhh ceritaaa kecill yanggg inginnn akuuu
+            tunjukkannn kepadamuuu. Bukannn ceritaaa sempurnaaa,
+            tapiii ceritaaa yanggg berisiii banyakkkk halll sederhanaaaa
+            yangggg membuatkuuuu bersyukurrr pernahhh mengenalmuuuu.
+        </p>
+
+        <button class="start-btn"
+                onclick="startStory()">
+            Mulai Cerita ❤️
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<audio id="music" loop>
+    <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn"
+        onclick="toggleMusic()">
+    🎵
+</button>
+
+
+<div class="container">
+
+    <div class="top-title">
+
+        <h1>Our Little Universe 🌙</h1>
+
+        <p>
+            Sepuluh chapter kecil tentang kita.
+            Buka satu per satu dan temukan
+            apa yang sudah aku simpan di dalamnya.
+        </p>
+
+    </div>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress-container">
+
+        <div class="progress-info">
+            <span id="progressText">
+                Chapter 1 / 10
+            </span>
+
+            <span id="progressPercent">
+                10%
+            </span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill"
+                 id="progressFill">
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CHAPTER 1
+    ========================= -->
+
+    <section class="chapter"
+             id="chapter1">
+
+        <div class="chapter-number">
+            CHAPTER 01
+        </div>
+
+        <h2>The First Heart ❤️</h2>
+
+        <p class="chapter-text">
+            Sebelummm kitaaa berjalann lebihh jauhh,
+            akuuu inginnn kamuuu melakukannn satuuu halll kecilll.
+            Sentuhhh hatiii iniii beberapaaa kaliii.
+            Anggappp sajaaa setiappp sentuhannn adalahhh satuuuu
+            alasannnn kenapaaa ceritaa inii masihh inginnn akuu lanjutkannn.
+        </p>
+
+        <div class="heart-button"
+             onclick="pressHeart()">
+            ❤️
+        </div>
+
+        <div class="counter-small"
+             id="heartCounter">
+            0 / 5
+        </div>
+
+        <div class="unlock-text"
+             id="heartMessage">
+            Sentuh hatinya 5 kali...
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CHAPTER 2
+    ========================= -->
+
+    <section class="chapter locked"
+             id="chapter2">
+
+        <div class="chapter-number">
+            CHAPTER 02
+        </div>
+
+        <h2>A Secret Letter 💌</h2>
+
+        <p class="chapter-text">
+            Ada beberapa hal yang kadang sulit aku
+            katakan secara langsung. Jadi kali ini,
+            aku menyimpannya di dalam sebuah surat kecil.
+            Buka amplopnya dan baca sampai selesai.
+        </p>
+
+        <div class="envelope-wrap">
+
+            <div class="envelope"
+                 id="envelope"
+                 onclick="openLetter()">
+                💌
+            </div>
+
+        </div>
+
+        <div class="letter"
+             id="letter">
+
+            <span id="letterText"></span>
+
+        </div>
+
+        <button class="btn"
+                id="letterButton"
+                style="display:none;"
+                onclick="unlockChapter(3)">
+            Aku sudah membacanya ❤️
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         CHAPTER 3
+    ========================= -->
+
+    <section class="chapter locked"
+             id="chapter3">
+
+        <div class="chapter-number">
+            CHAPTER 03
+        </div>
+
+        <h2>Our Memories 📸</h2>
+
+        <p class="chapter-text">
+            Foto mungkin hanya menyimpan gambar,
+            tapi di balik setiap gambar ada waktu,
+            suasana, dan perasaan yang pernah kita punya.
+            Sekarang pilih salah satu kenangan yang ingin kamu buka.
+        </p>
+
+        <div class="gallery">
+
+            <div class="photo-card"
+                 onclick="choosePhoto(1)">
+                <img src="foto1.jpg">
+                <span>Memory One</span>
+            </div>
+
+            <div class="photo-card"
+                 onclick="choosePhoto(2)">
+                <img src="foto2.jpg">
+                <span>Memory Two</span>
+            </div>
+
+            <div class="photo-card"
+                 onclick="choosePhoto(3)">
+                <img src="foto3.jpg">
+                <span>Memory Three</span>
+            </div>
+
+        </div>
+
+        <div class="gallery-result"
+             id="galleryResult">
+            Pilih salah satu foto ❤️
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CHAPTER 4
+    ========================= -->
+
+    <section class="chapter locked"
+             id="chapter4">
+
+        <div class="chapter-number">
+            CHAPTER 04
+        </div>
+
+        <h2>Our Time ⏰</h2>
+
+        <p class="chapter-text">
+            Waktu terus berjalan tanpa pernah berhenti.
+            Hari berubah menjadi minggu, minggu menjadi bulan,
+            dan setiap detik membawa kita semakin jauh dari
+            hari pertama. Tapi ada kenangan yang tetap ingin aku simpan.
+        </p>
+
+        <div class="time-grid">
+
+            <div class="time-card">
+                <b id="days">0</b>
+                <span>DAYS</span>
+            </div>
+
+            <div class="time-card">
+                <b id="hours">0</b>
+                <span>HOURS</span>
+            </div>
+
+            <div class="time-card">
+                <b id="minutes">0</b>
+                <span>MINUTES</span>
+            </div>
+
+            <div class="time-card">
+                <b id="seconds">0</b>
+                <span>SECONDS</span>
+            </div>
+
+        </div>
+
+        <div class="date-start">
+            Since 08 June 2026 ❤️
+        </div>
+
+        <button class="btn"
+                onclick="unlockChapter(5)">
+            Lanjutkan perjalanan →
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         CHAPTER 5
+    ========================= -->
+
+    <section class="chapter locked"
+             id="chapter5">
+
+        <div class="chapter-number">
+            CHAPTER 05
+        </div>
+
+        <h2>Little Love Quiz 💕</h2>
+
+        <p class="chapter-text">
+            Sekarang waktunya sedikit bermain.
+            Tidak ada jawaban yang benar-benar salah.
+            Pilih jawaban yang paling menggambarkan
+            apa yang kamu inginkan dari cerita kita.
+        </p>
+
+
+        <div class="quiz-question">
+
+            <h3>
+                1. Kalau punya waktu bersama,
+                kamu paling ingin...
+            </h3>
+
+            <div class="quiz-options">
+
+                <button onclick="quizAnswer(1)">
+                    🌙 Jalan-jalan dan ngobrol
+                </button>
+
+                <button onclick="quizAnswer(1)">
+                    🧸 Duduk bersama tanpa banyak bicara
+                </button>
+
+                <button onclick="quizAnswer(1)">
+                    📸 Membuat banyak kenangan
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="quiz-question">
+
+            <h3>
+                2. Hal kecil yang paling penting?
+            </h3>
+
+            <div class="quiz-options">
+
+                <button onclick="quizAnswer(2)">
+                    ❤️ Saling mengerti
+                </button>
+
+                <button onclick="quizAnswer(2)">
+                    🤝 Saling menjaga
+                </button>
+
+                <button onclick="quizAnswer(2)">
+                    😂 Saling membuat tertawa
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="quiz-score"
+             id="quizScore">
+            Jawab kedua pertanyaan ❤️
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CHAPTER 6
+    ========================= -->
+
+    <section class="chapter locked"
+             id="chapter6">
+
+        <div class="chapter-number">
+            CHAPTER 06
+        </div>
+
+        <h2>Catch My Heart 💗</h2>
+
+        <p class="chapter-text">
+            Hati ini ternyata tidak mau diam.
+            Tangkap lima hati yang muncul di dalam kotak.
+            Kalau semuanya berhasil kamu tangkap,
+            satu chapter berikutnya akan terbuka.
+        </p>
+
+        <div class="game-area"
+             id="gameArea">
+
+            <div class="catch-heart"
+                 id="catchHeart"
+                 onclick="catchHeart()">
+                ❤️
+            </div>
+
+        </div>
+
+        <div class="catch-score"
+             id="catchScore">
+            Hati tertangkap: 0 / 5
+        </div>
+
+        <button class="btn"
+                onclick="startHeartGame()">
+            Mulai Game 💗
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         CHAPTER 7
+    ========================= -->
+
+    <section class="chapter locked"
+             id="chapter7">
+
+        <div class="chapter-number">
+            CHAPTER 07
+        </div>
+
+        <h2>Our Little Garden 🌹</h2>
+
+        <p class="chapter-text">
+            Bayangkan kalau setiap kenangan kita
+            bisa berubah menjadi bunga.
+            Mungkin taman ini akan penuh sekali.
+            Tanam tujuh bunga dan lihat taman kecil kita tumbuh.
+        </p>
+
+        <div class="garden"
+             id="garden">
+            🌱
+        </div>
+
+        <div class="garden-count"
+             id="gardenCount">
+            0 / 7 bunga
+        </div>
+
+        <button class="btn"
+                onclick="plantFlower()">
+            🌱 Tanam Bunga
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         CHAPTER 8
+    ========================= -->
+
+    <section class="chapter locked"
+             id="chapter8">
+
+        <div class="chapter-number">
+            CHAPTER 08
+        </div>
+
+        <h2>The Hidden Code 🔐</h2>
+
+        <p class="chapter-text">
+            Ada satu kode yang sebenarnya sudah pernah
+            kamu lihat sejak awal perjalanan ini.
+            Ingat tanggal yang menjadi awal dari cerita kecil kita.
+            Masukkan tanggal tersebut untuk membuka rahasia.
+        </p>
+
+        <div class="code-box">
+
+            <input
+                id="codeInput"
+                class="code-input"
+                maxlength="8"
+                placeholder="DDMMYYYY"
+            >
+
+            <button class="btn"
+                    onclick="checkCode()">
+                Buka 🔐
+            </button>
+
+        </div>
+
+        <div class="code-result"
+             id="codeResult">
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CHAPTER 9
+    ========================= -->
+
+    <section class="chapter locked"
+             id="chapter9">
+
+        <div class="chapter-number">
+            CHAPTER 09
+        </div>
+
+        <h2>One Last Question 🧸</h2>
+
+        <div class="question-box">
+
+            <div class="big-question">
+
+                Kalau cerita kecil ini punya
+                halaman berikutnya...
+
+                <br><br>
+
+                kamu mau tetap ada di dalamnya? ❤️
+
+            </div>
+
+            <button class="btn yes-btn"
+                    onclick="yesAnswer()">
+                YES ❤️
+            </button>
+
+            <button class="btn no-btn"
+                    onclick="noAnswer()">
+                Hmm...
+            </button>
+
+            <div id="answerResult"
+                 class="unlock-text">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CHAPTER 10
+    ========================= -->
+
+    <section class="chapter locked"
+             id="chapter10">
+
+        <div class="chapter-number">
+            CHAPTER 10
+        </div>
+
+        <h2>Our Future 🌙</h2>
+
+        <p class="chapter-text">
+            Aku tidak tahu persis seperti apa hari-hari
+            yang akan datang. Tapi kalau boleh berharap,
+            aku ingin masih ada banyak hal sederhana
+            yang bisa kita lakukan dan kenang bersama.
+        </p>
+
+        <div class="future-grid">
+
+            <div class="future-card"
+                 onclick="futureClick(this)">
+                <div class="icon">🌙</div>
+                <b>More Nights</b>
+                <p>
+                    Lebih banyak malam untuk bercerita.
+                </p>
+            </div>
+
+            <div class="future-card"
+                 onclick="futureClick(this)">
+                <div class="icon">📸</div>
+                <b>More Memories</b>
+                <p>
+                    Lebih banyak momen untuk disimpan.
+                </p>
+            </div>
+
+            <div class="future-card"
+                 onclick="futureClick(this)">
+                <div class="icon">😂</div>
+                <b>More Laughter</b>
+                <p>
+                    Lebih banyak alasan untuk tertawa.
+                </p>
+            </div>
+
+            <div class="future-card"
+                 onclick="futureClick(this)">
+                <div class="icon">❤️</div>
+                <b>Still Us</b>
+                <p>
+                    Dan semoga tetap menjadi kita.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="unlock-text"
+             id="futureResult">
+            Buka semua kartu di atas ❤️
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ENDING
+    ========================= -->
+
+    <section id="ending">
+
+        <div class="final-heart">
+            ❤️
+        </div>
+
+        <h1>
+            Happy Anniversary sayangggg
+        </h1>
+
+        <div class="final-text">
+
+            Sampaiii akhirnyaaaa kitaaa sampaiii
+            diiii halamanaaa terakhirrr.
+
+            <br><br>
+
+            Akuuuu tahuuu mungkinnn semuaaaa yanggg adaaaa
+            diii websiteee iniii terlihattt sederhanaaa.
+            Tapiii setiappp kataaa, setiappp bagiannn,
+            dannn setiappp chapterrr dibuattt dengannn satuuu tujuannn:
+            untukkk menunjukkannn bahwaaa akuuu menghargaiii
+            keberadaanmuuu dalammm hidupkuuu.
+
+            <br><br>
+
+            Akuuu tidakkk bisaaa menjanjikannn bahwaaa
+            setiappp hariii akannn selaluuu sempurnaaa.
+            Tapiii akuuu berharappp, diii antaraaa banyaknyaaa
+            hariii yanggg akannn datanggg, masihhh adaaa banyakkk
+            alasannn untukkk tersenyummm, tertawaaa,
+            berceritaaa, dannn membuattt kenangannn baruuu.
+
+            <br><br>
+
+            Kalauuuu suatuuu saattt nantiii kitaaa membukaaa
+            halamannn iniii lagiii, semogaaaa kitaaaa bisaaa
+            melihatnyaaa sambilll tersenyummm dannn berkataaa,
+
+            <br><br>
+
+            <b>
+                "Ternyataaa kitaaa sudahhh sejauhhh iniiii yaaa❤️💞."
+            </b>
+
+            <br><br>
+
+            Terimaaaa kasihhhh sudahhh menjadiii bagiannnn
+            dariiii ceritaaaa kecilkuuu.
+
+            <br><br>
+
+            Dannnn kalauuuu akuuuu diberiii kesempatannn
+            untukkk memilihhhh lagiiii...
+
+            <br><br>
+
+            <b style="color:#ff8faf;font-size:19px;">
+                Akuuu tetapppp akannn memilihhh kamuuu. ❤️❤️❤️🥰
+            </b>
+
+        </div>
+
+        <div class="final-date">
+            08 • 06 • 2026
+        </div>
+
+        <button class="btn"
+                onclick="restartStory()">
+            ↻ Replay Our Story
+        </button>
+
+    </section>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+const startDate =
+    new Date(2026,5,8);
+
+let currentChapter = 1;
+
+
+/* =========================================
+   START
+========================================= */
+
+function startStory(){
+
+    const intro =
+        document.getElementById("intro");
+
+    intro.style.opacity="0";
+
+    setTimeout(()=>{
+        intro.style.display="none";
+    },1000);
+
+    const music =
+        document.getElementById("music");
+
+    music.play().catch(()=>{});
+
+    updateProgress();
+
+}
+
+
+/* =========================================
+   MUSIC
+========================================= */
+
+function toggleMusic(){
+
+    const music =
+        document.getElementById("music");
+
+    if(music.paused){
+        music.play();
+    }else{
+        music.pause();
+    }
+
+}
+
+
+/* =========================================
+   UNLOCK CHAPTER
+========================================= */
+
+function unlockChapter(number){
+
+    const chapter =
+        document.getElementById("chapter"+number);
+
+    if(!chapter) return;
+
+    chapter.classList.remove("locked");
+    chapter.classList.add("unlocked");
+
+    currentChapter = Math.max(
+        currentChapter,
+        number
+    );
+
+    updateProgress();
+
+    try{
+        localStorage.setItem(
+            "anniversaryProgress",
+            currentChapter
+        );
+    }catch(e){}
+
+    setTimeout(()=>{
+
+        chapter.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    },300);
+
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+function updateProgress(){
+
+    let percent =
+        currentChapter * 10;
+
+    document.getElementById("progressFill")
+        .style.width = percent+"%";
+
+    document.getElementById("progressText")
+        .innerHTML =
+        "Chapter "+currentChapter+" / 10";
+
+    document.getElementById("progressPercent")
+        .innerHTML =
+        percent+"%";
+
+}
+
+
+/* =========================================
+   LOAD PROGRESS
+========================================= */
+
+try{
+
+    const saved =
+        localStorage.getItem(
+            "anniversaryProgress"
+        );
+
+    if(saved){
+
+        let progress =
+            parseInt(saved);
+
+        if(progress >= 1){
+
+            for(let i=2;i<=progress;i++){
+
+                const chapter =
+                    document.getElementById(
+                        "chapter"+i
+                    );
+
+                if(chapter){
+                    chapter.classList.remove("locked");
+                }
+
+            }
+
+            currentChapter = progress;
+
+        }
+
+    }
+
+}catch(e){}
+
+updateProgress();
+
+
+/* =========================================
+   CHAPTER 1
+========================================= */
+
+let heartCount = 0;
+
+function pressHeart(){
+
+    heartCount++;
+
+    document.getElementById(
+        "heartCounter"
+    ).innerHTML =
+        heartCount+" / 5";
+
+    createSpark(
+        event.clientX,
+        event.clientY
+    );
+
+    if(heartCount >= 5){
+
+        document.getElementById(
+            "heartMessage"
+        ).innerHTML =
+            "Hatinya sudah terbuka... ❤️";
+
+        unlockChapter(2);
+
+    }
+
+}
+
+
+/* =========================================
+   CHAPTER 2 LETTER
+========================================= */
+
+let letterOpened = false;
+
+const letterMessage =
+`Hai kamu... ❤️
+
+Kalau kamu sedang membaca pesan ini,
+berarti kamu sudah sampai di bagian kecil
+yang sengaja aku simpan.
+
+Aku mungkin tidak selalu bisa mengatakan
+semua yang ada di pikiranku dengan baik.
+Tapi satu hal yang pasti, aku bersyukur
+pernah bertemu denganmu dan mempunyai
+kesempatan untuk membuat cerita bersama.
+
+Mungkin perjalanan kita tidak selalu sempurna.
+Ada hari yang menyenangkan, ada juga hari
+yang terasa sedikit berat.
+
+Tapi justru dari semua itu, aku belajar bahwa
+sebuah hubungan bukan hanya tentang hari-hari
+yang indah, tetapi juga tentang bagaimana kita
+tetap memilih untuk saling memahami.
+
+Terima kasih sudah hadir.
+Dan terima kasih karena sudah menjadi
+bagian dari cerita kecil ini. ❤️`;
+
+function openLetter(){
+
+    if(letterOpened) return;
+
+    letterOpened=true;
+
+    document.getElementById(
+        "envelope"
+    ).classList.add("open");
+
+    document.getElementById(
+        "letter"
+    ).style.display="block";
+
+    typeLetter();
+
+}
+
+
+function typeLetter(){
+
+    const target =
+        document.getElementById(
+            "letterText"
+        );
+
+    let index=0;
+
+    function type(){
+
+        if(index < letterMessage.length){
+
+            target.innerHTML +=
+                letterMessage.charAt(index);
+
+            index++;
+
+            setTimeout(type,18);
+
+        }else{
+
+            document.getElementById(
+                "letterButton"
+            ).style.display="block";
+
+        }
+
+    }
+
+    type();
+
+}
+
+
+/* =========================================
+   CHAPTER 3
+========================================= */
+
+function choosePhoto(number){
+
+    const result =
+        document.getElementById(
+            "galleryResult"
+        );
+
+    result.innerHTML =
+        "Kenangan nomor "+number+
+        " berhasil ditemukan. ❤️<br>"+
+        "Ternyata beberapa hal sederhana "+
+        "memang pantas untuk disimpan.";
+
+    setTimeout(()=>{
+        unlockChapter(4);
+    },1200);
+
+}
+
+
+/* =========================================
+   CHAPTER 4 COUNTER
+========================================= */
+
+function updateCounter(){
+
+    const now =
+        new Date();
+
+    let diff =
+        now - startDate;
+
+    if(diff < 0){
+        diff=0;
+    }
+
+    let seconds =
+        Math.floor(diff/1000);
+
+    let days =
+        Math.floor(seconds/86400);
+
+    seconds %= 86400;
+
+    let hours =
+        Math.floor(seconds/3600);
+
+    seconds %= 3600;
+
+    let minutes =
+        Math.floor(seconds/60);
+
+    seconds %= 60;
+
+    document.getElementById("days")
+        .innerHTML=days;
+
+    document.getElementById("hours")
+        .innerHTML=hours;
+
+    document.getElementById("minutes")
+        .innerHTML=minutes;
+
+    document.getElementById("seconds")
+        .innerHTML=seconds;
+
+}
+
+setInterval(
+    updateCounter,
+    1000
+);
+
+updateCounter();
+
+
+/* =========================================
+   CHAPTER 5 QUIZ
+========================================= */
+
+let quiz1=false;
+let quiz2=false;
+
+function quizAnswer(number){
+
+    if(number===1){
+        quiz1=true;
+    }
+
+    if(number===2){
+        quiz2=true;
+    }
+
+    let score=0;
+
+    if(quiz1) score++;
+    if(quiz2) score++;
+
+    document.getElementById(
+        "quizScore"
+    ).innerHTML =
+        "Sudah terjawab: "+
+        score+
+        " / 2 ❤️";
+
+    if(quiz1 && quiz2){
+
+        document.getElementById(
+            "quizScore"
+        ).innerHTML =
+            "Semua pertanyaan selesai. "+
+            "Kamu berhasil membuka hati berikutnya 💕";
+
+        setTimeout(()=>{
+            unlockChapter(6);
+        },1000);
+
+    }
+
+}
+
+
+/* =========================================
+   CHAPTER 6 CATCH HEART
+========================================= */
+
+let caught=0;
+let gameRunning=false;
+
+function startHeartGame(){
+
+    if(gameRunning) return;
+
+    gameRunning=true;
+    caught=0;
+
+    document.getElementById(
+        "catchScore"
+    ).innerHTML =
+        "Hati tertangkap: 0 / 5";
+
+    showHeart();
+
+}
+
+
+function showHeart(){
+
+    const heart =
+        document.getElementById(
+            "catchHeart"
+        );
+
+    const area =
+        document.getElementById(
+            "gameArea"
+        );
+
+    const maxX =
+        area.clientWidth - 50;
+
+    const maxY =
+        area.clientHeight - 50;
+
+    heart.style.left =
+        Math.random()*maxX+"px";
+
+    heart.style.top =
+        Math.random()*maxY+"px";
+
+    heart.style.display="block";
+
+}
+
+
+function catchHeart(){
+
+    if(!gameRunning) return;
+
+    caught++;
+
+    document.getElementById(
+        "catchScore"
+    ).innerHTML =
+        "Hati tertangkap: "+
+        caught+" / 5";
+
+    if(caught>=5){
+
+        gameRunning=false;
+
+        document.getElementById(
+            "catchHeart"
+        ).style.display="none";
+
+        document.getElementById(
+            "catchScore"
+        ).innerHTML =
+            "Berhasil! Semua hati sudah tertangkap ❤️";
+
+        setTimeout(()=>{
+            unlockChapter(7);
+        },1000);
+
+    }else{
+
+        showHeart();
+
+    }
+
+}
+
+
+/* =========================================
+   CHAPTER 7 GARDEN
+========================================= */
+
+let flowers=0;
+
+function plantFlower(){
+
+    if(flowers>=7) return;
+
+    flowers++;
+
+    const garden =
+        document.getElementById(
+            "garden"
+        );
+
+    const flower =
+        document.createElement(
+            "div"
+        );
+
+    flower.className="seed";
+
+    flower.innerHTML=
+        flowers===1
+        ?"🌱"
+        :"🌹";
+
+    garden.appendChild(flower);
+
+    document.getElementById(
+        "gardenCount"
+    ).innerHTML =
+        flowers+" / 7 bunga";
+
+    if(flowers>=7){
+
+        document.getElementById(
+            "gardenCount"
+        ).innerHTML =
+            "Tamannn kecilll kitaaa sudahhh mekarrr 🌹❤️";
+
+        setTimeout(()=>{
+            unlockChapter(8);
+        },1000);
+
+    }
+
+}
+
+
+/* =========================================
+   CHAPTER 8 CODE
+========================================= */
+
+function checkCode(){
+
+    const code =
+        document.getElementById(
+            "codeInput"
+        ).value.trim();
+
+    const result =
+        document.getElementById(
+            "codeResult"
+        );
+
+    if(code==="08062026"){
+
+        result.innerHTML =
+            "Kode benar! 🔓<br><br>"+
+            "Kamu menemukan rahasia kecil kita.";
+
+        setTimeout(()=>{
+            unlockChapter(9);
+        },1200);
+
+    }else{
+
+        result.innerHTML =
+            "Hmm... belum benar. "+
+            "Coba ingat lagi tanggal yang muncul "+
+            "sejak awal cerita. ❤️";
+
+    }
+
+}
+
+
+/* =========================================
+   CHAPTER 9
+========================================= */
+
+function yesAnswer(){
+
+    document.getElementById(
+        "answerResult"
+    ).innerHTML =
+        "Aku senang mendengarnya. ❤️<br>"+
+        "Kalau begitu, masih ada satu halaman terakhir.";
+
+    setTimeout(()=>{
+        unlockChapter(10);
+    },1200);
+
+}
+
+
+function noAnswer(){
+
+    document.getElementById(
+        "answerResult"
+    ).innerHTML =
+        "Hmm... aku anggap itu cuma malu-malu. 😂❤️";
+
+}
+
+
+/* =========================================
+   CHAPTER 10
+========================================= */
+
+let futureCards=0;
+
+function futureClick(element){
+
+    if(element.dataset.clicked){
+        return;
+    }
+
+    element.dataset.clicked="yes";
+
+    futureCards++;
+
+    element.style.borderColor="#ff719b";
+    element.style.transform="translateY(-5px)";
+
+    document.getElementById(
+        "futureResult"
+    ).innerHTML =
+        "Sudah dibuka: "+
+        futureCards+" / 4 ❤️";
+
+    if(futureCards>=4){
+
+        document.getElementById(
+            "futureResult"
+        ).innerHTML =
+            "Semua harapan kecil sudah terbuka. ❤️";
+
+        setTimeout(()=>{
+            showEnding();
+        },1200);
+
+    }
+
+}
+
+
+/* =========================================
+   ENDING
+========================================= */
+
+function showEnding(){
+
+    const ending =
+        document.getElementById(
+            "ending"
+        );
+
+    ending.style.display="block";
+
+    ending.scrollIntoView({
+        behavior:"smooth"
+    });
+
+    currentChapter=10;
+
+    updateProgress();
+
+    createConfetti();
+
+}
+
+
+/* =========================================
+   RESTART
+========================================= */
+
+function restartStory(){
+
+    try{
+        localStorage.removeItem(
+            "anniversaryProgress"
+        );
+    }catch(e){}
+
+    location.reload();
+
+}
+
+
+/* =========================================
+   FLOATING HEART
+========================================= */
+
+function createFloatingHeart(){
+
+    const heart =
+        document.createElement(
+            "div"
+        );
+
+    heart.className=
+        "float-heart";
+
+    const hearts=[
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💘"
+    ];
+
+    heart.innerHTML=
+        hearts[
+            Math.floor(
+                Math.random()*hearts.length
+            )
+        ];
+
+    heart.style.left=
+        Math.random()*100+"vw";
+
+    heart.style.fontSize=
+        (12+Math.random()*18)+"px";
+
+    heart.style.animationDuration=
+        (5+Math.random()*5)+"s";
+
+    document.body.appendChild(
+        heart
+    );
+
+    setTimeout(()=>{
+        heart.remove();
+    },10000);
+
+}
+
+setInterval(
+    createFloatingHeart,
+    1000
+);
+
+
+/* =========================================
+   SPARK
+========================================= */
+
+document.addEventListener(
+    "click",
+    function(e){
+
+        if(
+            e.target.tagName==="BUTTON" ||
+            e.target.classList.contains(
+                "heart-button"
+            )
+        ){
+
+            createSpark(
+                e.clientX,
+                e.clientY
+            );
+
+        }
+
+    }
+);
+
+
+function createSpark(x,y){
+
+    const spark =
+        document.createElement(
+            "div"
+        );
+
+    spark.className="spark";
+    spark.innerHTML="✨";
+
+    spark.style.left=x+"px";
+    spark.style.top=y+"px";
+
+    document.body.appendChild(
+        spark
+    );
+
+    setTimeout(()=>{
+        spark.remove();
+    },800);
+
+}
+
+
+/* =========================================
+   CONFETTI
+========================================= */
+
+function createConfetti(){
+
+    const symbols=[
+        "❤️",
+        "💕",
+        "✨",
+        "🌹",
+        "💗"
+    ];
+
+    for(let i=0;i<35;i++){
+
+        const item =
+            document.createElement(
+                "div"
+            );
+
+        item.innerHTML=
+            symbols[
+                Math.floor(
+                    Math.random()*symbols.length
+                )
+            ];
+
+        item.style.position="fixed";
+        item.style.left=
+            Math.random()*100+"vw";
+
+        item.style.top="-30px";
+
+        item.style.fontSize=
+            (15+Math.random()*20)+"px";
+
+        item.style.zIndex="9999";
+
+        item.style.transition=
+            "transform 3s linear, opacity 3s";
+
+        document.body.appendChild(item);
+
+        setTimeout(()=>{
+
+            item.style.transform=
+                "translateY(110vh) rotate(720deg)";
+
+            item.style.opacity="0";
+
+        },50);
+
+        setTimeout(()=>{
+            item.remove();
+        },3200);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
